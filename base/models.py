@@ -62,7 +62,7 @@ class GuestTalk(models.Model):
     venue = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return self.guest_name
 
 class Exhibition(models.Model):
     id = models.IntegerField(primary_key=True)
