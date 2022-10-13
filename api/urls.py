@@ -19,4 +19,10 @@ urlpatterns = [
     path('events/', views.getEvents),
     path('events/<int:id>', views.getEventDetails),
     path('winners/', views.getWinners),
+    path('winners/event/<int:id>', views.getEventWinners),
+
+    path('all_users/', views.getUsers),
+    path('users/<int:pk>/', views.getUserDetails),
+    path('participants/', views.getParticipants),
+    path('participants/<int:pk>/', views.getParticipantDetails),
 ]

@@ -1,11 +1,13 @@
 from atexit import register
+from enum import unique
 from django.db import models
 #from tinymce import HTMLField
 
 class Event(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
+    event_id = models.CharField(max_length=100, unique=True)
     name = models.CharField(max_length=200)
-    sub_title = models.CharField(max_length=200)
+    presented_by = models.CharField(max_length=200)
     summary = models.CharField(max_length=200)
     details = models.TextField()
     event_type = models.CharField(max_length=50, choices=[('departmental', 'Departmental'), ('informal', 'Informal'), ('club', 'Club')])
@@ -19,9 +21,13 @@ class Event(models.Model):
     event_complete = models.BooleanField(default=False)
     venue = models.CharField(max_length=100)
 
+    def __str__(self):
+        self.name
+    
 class Winner(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=100)
+    college = models.CharField(max_length=100)
     position = models.IntegerField()
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
